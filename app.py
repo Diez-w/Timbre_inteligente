@@ -60,13 +60,13 @@ def recibir():
 
     mensaje = ""
 
-    # Reconocimiento facial
-try:
-    global DeepFace
-    if DeepFace is None:
-        from deepface import DeepFace
+# Reconocimiento facial
+    try:
+        global DeepFace
+        if DeepFace is None:
+            from deepface import DeepFace
 
-    resultado = DeepFace.find(img_path=filepath, db_path="base_rostros")
+        resultado = DeepFace.find(img_path=filepath, db_path="base_rostros")
         if len(resultado) > 0:
             persona = resultado[0]['identity'].values[0]
             mensaje += f"Rostro reconocido: {persona}"
@@ -83,7 +83,7 @@ try:
     except:
         mensaje += "\nNo se pudo analizar gesto facial."
 
-    imagen_url = f"https://TU_APP.onrender.com/{filepath}"
+    imagen_url = f"https://timbre-inteligente.onrender.com/{filepath}"
     mensaje += f"\nVer imagen: {imagen_url}"
 
     # Enviar a WhatsApp
