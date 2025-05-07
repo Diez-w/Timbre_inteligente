@@ -48,10 +48,11 @@ def detectar_guiño(imagen_path):
 
 @app.route('/recibir', methods=['POST'])
 def recibir():
-    if 'file' not in request.files:
+    print ("Archivos recibidos:", request.files)
+    if 'imagen' not in request.files:
         return "No se recibió imagen", 400
 
-    file = request.files['file']
+    file = request.files['imagen']
     timestamp = str(time.time())
     nombre = hashlib.sha256(timestamp.encode()).hexdigest()[:12] + ".jpg"
     filepath = os.path.join(UPLOAD_FOLDER, nombre)
