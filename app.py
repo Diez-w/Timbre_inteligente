@@ -1,5 +1,5 @@
 from flask import Flask, request
-from deepface import DeepFace
+DeepFace = None
 import os, hashlib, time, threading, cv2
 import numpy as np
 import mediapipe as mp
@@ -61,8 +61,12 @@ def recibir():
     mensaje = ""
 
     # Reconocimiento facial
-    try:
-        resultado = DeepFace.find(img_path=filepath, db_path="base_rostros")
+try:
+    global DeepFace
+    if DeepFace is None:
+        from deepface import DeepFace
+
+    resultado = DeepFace.find(img_path=filepath, db_path="base_rostros")
         if len(resultado) > 0:
             persona = resultado[0]['identity'].values[0]
             mensaje += f"Rostro reconocido: {persona}"
