@@ -5,7 +5,7 @@ import numpy as np
 import mediapipe as mp
 import requests
 
-app = Flask(_name_)
+app = Flask(__name__)
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
