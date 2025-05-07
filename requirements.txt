@@ -1,0 +1,6 @@
+flask
+deepface
+mediapipe
+opencv-python
+numpy
+requests
