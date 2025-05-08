@@ -2,7 +2,7 @@ from flask import Flask, request
 from werkzeug.utils import secure_filename
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -21,6 +21,6 @@ def recibir():
 
     return f"Imagen recibida y guardada como {nombre}", 200
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
