@@ -2,7 +2,7 @@ from flask import Flask, request
 from werkzeug.utils import secure_filename
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -24,5 +24,5 @@ def recibir():
 
     return f"Imagen recibida y guardada como {nombre}", 200
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     app.run(debug=True)
